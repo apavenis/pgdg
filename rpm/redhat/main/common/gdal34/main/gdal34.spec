@@ -282,8 +282,10 @@ Requires:	netcdf gpsbabel
 Requires:	libgeotiff%{libgeotiffmajorversion}-devel
 Requires:	libspatialite%{libspatialitemajorversion}-devel
 
+%if 0%{?suse_version}
 %if 0%{?suse_version} <= 1499
 Requires:	libarmadillo10
+%endif
 %endif
 %if 0%{?fedora} >= 33 || 0%{?rhel} >= 7
 Requires:	armadillo
