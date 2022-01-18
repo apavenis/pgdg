@@ -1,0 +1,1 @@
+../main/../main/postgis23.spec
