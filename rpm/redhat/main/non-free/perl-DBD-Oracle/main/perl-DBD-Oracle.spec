@@ -1,7 +1,7 @@
 %global		name perl-DBD-Oracle
 %global		pkgname %(echo %{name}| sed 's/perl-//')
 %{!?version:%global version 1.90_5}
-%{!?oi_release:%global oi_release 21.10.0.0.0}
+%{!?oi_release:%global oi_release 19.9.0.0.0}
 %global		release %{oi_release}%{dist}
 %global		perl_vendorarch %(eval "$(%{__perl} -V:installvendorarch)"; echo $installvendorarch)
 %global		_use_internal_dependency_generator 0
@@ -11,7 +11,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%{release}
+Release:	%{release}.fmi
 Summary:	DBD-Oracle - Oracle database driver for the DBI module
 License:	GPL+ or Artistic
 URL:		https://github.com/pythian/DBD-Oracle
@@ -21,9 +21,9 @@ Requires:	perl(:MODULE_COMPAT_%(eval "$(%{__perl} -V:version)"; echo $version))
 Requires:	perl(ExtUtils::MakeMaker) >= 6.30
 BuildRequires:	perl(DBI) >= 1.51 perl(ExtUtils::MakeMaker) >= 6.30
 Requires:	perl(DBI) >= 1.51
-Requires:	oracle-instantclient-basic = %{oi_release}
-BuildRequires:	oracle-instantclient-devel = %{oi_release}
-BuildRequires:	oracle-instantclient-sqlplus = %{oi_release}
+Requires:	oracle-instantclient19.9-basic = %{oi_release}-1
+BuildRequires:	oracle-instantclient19.9-devel = %{oi_release}-1
+BuildRequires:	oracle-instantclient19.9-sqlplus = %{oi_release}-1
 Provides:	perl(DBD-Oracle) = %{version}
 
 %description
@@ -38,9 +38,9 @@ In any case consult the DBI documentation first!
 chmod -R u+w %{_builddir}/%{pkgname}-%{version}
 
 %build
-export ORACLE_HOME=$(dirname $(dirname $(rpm -ql oracle-instantclient-sqlplus | grep '/usr/lib/oracle/.*/sqlplus')))
+export ORACLE_HOME=$(dirname $(dirname $(rpm -ql oracle-instantclient19.9-sqlplus | grep '/usr/lib/oracle/.*/sqlplus')))
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
-MKFILE=$(rpm -ql oracle-instantclient-devel | grep demo.mk)
+MKFILE=$(rpm -ql oracle-instantclient19.9-devel | grep demo.mk)
 %{__perl} Makefile.PL -m $MKFILE INSTALLDIRS="vendor" PREFIX=%{_prefix} -V %{oi_release}
 %{__make} %{?_smp_mflags} OPTIMIZE="%{optflags}"
 
