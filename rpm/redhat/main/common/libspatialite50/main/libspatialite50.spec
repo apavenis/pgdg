@@ -39,7 +39,7 @@
 
 Name:		%{sname}%{libspatialitemajorversion}
 Version:	5.0.1
-Release:	7%{?dist}
+Release:	7.1.fmi%{?dist}
 Summary:	Enables SQLite to support spatial data
 License:	MPLv1.1 or GPLv2+ or LGPLv2+
 URL:		https://www.gaia-gis.it/fossil/libspatialite
