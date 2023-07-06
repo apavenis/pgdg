@@ -4,9 +4,9 @@
 %pgdg_set_gis_variables
 
 # Override some variables.
-%global projmajorversion %proj82majorversion
-%global projfullversion %proj82fullversion
-%global projinstdir %proj82instdir
+%global projmajorversion %proj90majorversion
+%global projfullversion %proj90fullversion
+%global projinstdir %proj90instdir
 
 # Override PROJ major version on RHEL 7.
 # libspatialite 4.3 does not build against 8.0.0 as of March 2021.
