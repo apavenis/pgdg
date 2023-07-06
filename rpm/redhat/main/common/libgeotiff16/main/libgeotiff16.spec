@@ -76,6 +76,7 @@ sed -i 's| \| sed \"s\/-g \/\/\"||g' configure
 # use gcc -shared instead of ld -shared to build with -fstack-protector
 sed -i 's|LD_SHARED=@LD_SHARED@|LD_SHARED=@CC@ -shared|' Makefile.in
 
+LDFLAGS=-L%{projinstdir}/lib64 \
 ./configure \
 	--prefix=%{libgeotiffinstdir}	\
 	--includedir=%{libgeotiffinstdir}/include/ \
