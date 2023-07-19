@@ -22,9 +22,9 @@
 # libspatialite 4.3 does not build against 8.0.0 as of March 2021.
 # Also use GDAL 3.4
 %if 0%{?rhel} && 0%{?rhel} == 7
-%global gdalfullversion %gdal34fullversion
-%global gdalmajorversion %gdal34majorversion
-%global gdalinstdir %gdal34instdir
+%global gdalfullversion %gdal35fullversion
+%global gdalmajorversion %gdal35majorversion
+%global gdalinstdir %gdal35instdir
 %global projmajorversion 72
 %global projfullversion 7.2.1
 %global projinstdir /usr/proj%{projmajorversion}
@@ -272,6 +272,7 @@ autoconf
 %else
 	--without-protobuf \
 %endif
+	--with-projdir=%{projinstdir} \
 	--enable-rpath --libdir=%{pginstdir}/lib \
 	--with-geosconfig=%{geosinstdir}/bin/geos-config \
 	--with-gdalconfig=%{gdalinstdir}/bin/gdal-config
