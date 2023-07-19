@@ -378,7 +378,7 @@ export OGDI_LIBS='-L%{ogdiinstdir}/lib'
  -DBUILD_PYTHON_BINDINGS=OFF \
  %endif
  -DGDAL_JAVA_INSTALL_DIR=%{_jnidir}/%{name} \
- -DCMAKE_PREFIX_PATH="%{geosinstdir};%{libgeotiffinstdir}" \
+ -DCMAKE_PREFIX_PATH="/usr/sqlite330;%{libspatialiteinstdir};%{projinstdir};%{geosinstdir};%{libgeotiffinstdir}" \
  -DGDAL_USE_JPEG12_INTERNAL=OFF
 
 %cmake_build
