@@ -15,6 +15,9 @@
 %global projmajorversion 72
 %global projfullversion 7.2.1
 %global projinstdir /usr/proj%{projmajorversion}
+%global geosfullversion %geos311fullversion
+%global geosmajorversion %geos311majorversion
+%global geosinstdir %geos311instdir
 %endif
 
 # A new feature available in PostGIS 2.0
