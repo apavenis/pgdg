@@ -47,6 +47,11 @@
 %global proj_somaj 22
 %endif
 
+%if 0%{?rhel} == 8
+# gdal-3.5 cmake build does not work in source directory
+%undefine __cmake_in_source_build
+%endif
+
 # Override PROJ major version on RHEL 7.
 # libspatialite 4.3 does not build against 8.0.0 as of March 2021.
 %if 0%{?rhel} && 0%{?rhel} == 7
@@ -72,7 +77,7 @@
 %global poppler --with-poppler
 %global spatialite "--with-spatialite=%{libspatialiteinstdir}"
 
-%if 0%{?rhel} >= 9 || 0%{?fedora} >= 35
+%if 0%{?rhel} >= 7 || 0%{?fedora} >= 35
 %{!?with_python3:%global with_python3 1}
 %else
 %{!?with_python3:%global with_python3 0}
