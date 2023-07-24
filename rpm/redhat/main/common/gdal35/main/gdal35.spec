@@ -5,7 +5,7 @@
 %if 0%{?fedora} >= 35
 %{expand: %%global pyver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:4])"`)}
 %else
-%{expand: %%global pyver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
+#%{expand: %%global pyver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
 %endif
 
 %global bashcompletiondir %(pkg-config --variable=compatdir bash-completion)
@@ -77,7 +77,7 @@
 %global poppler --with-poppler
 %global spatialite "--with-spatialite=%{libspatialiteinstdir}"
 
-%if 0%{?rhel} >= 7 || 0%{?fedora} >= 35
+%if 0%{?rhel} >= 8 || 0%{?fedora} >= 35
 %{!?with_python3:%global with_python3 1}
 %else
 %{!?with_python3:%global with_python3 0}
