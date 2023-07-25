@@ -85,7 +85,7 @@
 
 Name:		%{sname}35
 Version:	3.5.3
-Release:	5.1%{?pre:%pre}%{?dist}
+Release:	5.2%{?pre:%pre}%{?dist}
 Summary:	GIS file format library
 License:	MIT
 URL:		https://www.gdal.org
