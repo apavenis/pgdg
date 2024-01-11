@@ -10,12 +10,12 @@
 
 %global bashcompletiondir %(pkg-config --variable=compatdir bash-completion)
 
-%global geosfullversion %geos312fullversion
-%global geosmajorversion %geos312majorversion
-%global geosinstdir %geos312instdir
-%global projmajorversion %proj92majorversion
-%global projfullversion %proj92fullversion
-%global projinstdir %proj92instdir
+%global geosfullversion %geos311fullversion
+%global geosmajorversion %geos311majorversion
+%global geosinstdir %geos311instdir
+%global projmajorversion %proj90majorversion
+%global projfullversion %proj90fullversion
+%global projinstdir %proj90instdir
 
 %global gdalinstdir /usr/%{name}
 %global gdalsomajorversion	30
