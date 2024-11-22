@@ -12,7 +12,7 @@ Requires:	python3
 
 Summary:	Backup and Recovery Manager for PostgreSQL
 Name:		barman
-Version:	3.11.1
+Version:	3.12.0
 Release:	42PGDG%{?dist}
 License:	GPLv3
 Url:		https://www.pgbarman.org/
@@ -41,9 +41,6 @@ Client utilities for the integration of Barman in PostgreSQL clusters.
 %package -n python3-barman
 Summary:	The shared libraries required for Barman family components
 Requires:	python3-setuptools python3-psycopg2 >= 2.8.6
-%if 0%{?suse_version} >= 1315 && 0%{?suse_version} <= 1499
-Requires:	python-dateutil
-%endif
 
 %if 0%{?suse_version} >= 1500
 Requires:	python3-argcomplete
@@ -53,11 +50,6 @@ Requires:	python3-python-dateutil
 %if 0%{?rhel} >= 8 || 0%{?fedora}
 Requires:	python3-argcomplete
 Requires:	python3-dateutil
-%endif
-
-%if 0%{?rhel} && 0%{?rhel} == 7
-Requires:	python36-argcomplete
-Requires:	python36-dateutil
 %endif
 
 %description -n python3-barman
@@ -77,8 +69,8 @@ Python libraries used by Barman.
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/barman.d/
 %{__mkdir} -p %{buildroot}/var/lib/barman
 %{__mkdir} -p %{buildroot}/var/log/barman
-%{__install} -pm 644 doc/barman.conf %{buildroot}%{_sysconfdir}/barman.conf
-%{__install} -pm 644 doc/barman.d/* %{buildroot}%{_sysconfdir}/barman.d/
+%{__install} -pm 644 docs/barman.conf %{buildroot}%{_sysconfdir}/barman.conf
+%{__install} -pm 644 docs/barman.d/* %{buildroot}%{_sysconfdir}/barman.d/
 %{__install} -pm 644 scripts/barman.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/barman
 %{__install} -pm 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/logrotate.d/barman
 %{__install} -pm 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/cron.d/barman
@@ -91,7 +83,7 @@ useradd -M -g barman -r -d /var/lib/barman -s /bin/bash \
 
 %files
 %defattr(-,root,root)
-%doc NEWS README.rst
+%doc RELNOTES.md README.rst
 %{_bindir}/%{name}
 %doc %{_mandir}/man1/%{name}.1.gz
 %doc %{_mandir}/man5/%{name}.5.gz
@@ -106,7 +98,7 @@ useradd -M -g barman -r -d /var/lib/barman -s /bin/bash \
 
 %files -n barman-cli
 %defattr(-,root,root)
-%doc NEWS README.rst
+%doc RELNOTES.md README.rst
 %{_bindir}/barman-wal-archive
 %{_bindir}/barman-wal-restore
 %{_bindir}/barman-cloud-backup
@@ -118,16 +110,20 @@ useradd -M -g barman -r -d /var/lib/barman -s /bin/bash \
 %{_bindir}/barman-cloud-backup-list
 %{_bindir}/barman-cloud-restore
 %{_bindir}/barman-cloud-wal-restore
-%doc %{_mandir}/man1/barman-cloud*
-%doc %{_mandir}/man1/barman-wal*
+%doc %{_mandir}/man1/barman*
 
 %files -n python3-barman
 %defattr(-,root,root)
-%doc NEWS README.rst
+%doc RELNOTES.md README.rst
 %{python_sitelib}/%{name}-%{version}%{?extra_version:%{extra_version}}-py%{pybasever}.egg-info
 %{python_sitelib}/%{name}/
 
 %changelog
+* Fri Nov 22 2024 Devrim Gündüz <devrim@gunduz.org> - 3.12.0-1PGDG
+- Update to 3.12.0, per changes described at:
+  https://github.com/EnterpriseDB/barman/releases/tag/release%2F3.12.0
+- Remove RHEL 7 and SLES 12 bits
+
 * Fri Aug 23 2024 Devrim Gündüz <devrim@gunduz.org> - 3.11.1-1PGDG
 - Update to 3.11.1, per changes described at:
   https://github.com/EnterpriseDB/barman/releases/tag/release%2F3.11.1
