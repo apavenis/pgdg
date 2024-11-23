@@ -4,8 +4,8 @@
 %{!?llvm:%global llvm 1}
 
 Name:		%{sname}_%{pgmajorversion}
-Version:	5.4.1
-Release:	3PGDG%{?dist}
+Version:	5.5.0
+Release:	1PGDG%{?dist}
 Summary:	Replication Manager for PostgreSQL Clusters
 License:	GPLv3
 URL:		https://github.com/enterpriseDB/%{sname}
@@ -19,7 +19,7 @@ BuildRequires:	systemd, systemd-devel
 # We require this to be present for %%{_prefix}/lib/tmpfiles.d
 Requires:		systemd
 %if 0%{?suse_version}
-%if 0%{?suse_version} >= 1315
+%if 0%{?suse_version} >= 1500
 Requires(post):		systemd-sysvinit
 %endif
 %else
@@ -34,21 +34,13 @@ BuildRequires:	libxslt-devel pam-devel readline-devel
 BuildRequires:	libmemcached-devel libicu-devel pgdg-srpm-macros
 Requires:	postgresql%{pgmajorversion}-server
 
-%if 0%{?suse_version} >= 1315 && 0%{?suse_version} <= 1499
-Requires:	libopenssl1_0_0
-%else
 %if 0%{?suse_version} >= 1500
 Requires:	libopenssl1_1
 %else
 Requires:	openssl-libs >= 1.0.2k
 %endif
-%endif
 
-%if 0%{?suse_version} >= 1315 && 0%{?suse_version} <= 1499
-BuildRequires:	libopenssl-devel
-%else
 BuildRequires:	openssl-devel
-%endif
 
 Obsoletes:	%{sname}%{pgmajorversion} < 5.2.1-1
 Obsoletes:	%{sname}_%{pgmajorversion} < 5.2.1-1
@@ -87,8 +79,8 @@ BuildRequires:	llvm17-devel clang17-devel
 Requires:	llvm17
 %endif
 %if 0%{?fedora} || 0%{?rhel} >= 8
-BuildRequires:	llvm-devel >= 13.0 clang-devel >= 13.0
-Requires:	llvm => 13.0
+BuildRequires:	llvm-devel >= 17.0 clang-devel >= 17.0
+Requires:	llvm => 17.0
 %endif
 
 %description llvmjit
@@ -140,7 +132,7 @@ fi
 if [ $1 -eq 1 ] ; then
    /bin/systemctl daemon-reload >/dev/null 2>&1 || :
    %if 0%{?suse_version}
-   %if 0%{?suse_version} >= 1315
+   %if 0%{?suse_version} >= 1500
     %service_add_pre %{sname}-%{pgmajorversion}.service
    %endif
    %else
@@ -175,6 +167,11 @@ fi
 %endif
 
 %changelog
+* Mon Jul 24 2023 - Devrim Gündüz <devrim@gunduz.org> - 5.4.1-1PGDG
+- Update to 5.5.0, per changes described at:
+  https://repmgr.org/docs/current/release-5.5.0.html
+- Remove SLES 12 support
+
 * Mon Jul 29 2024 Devrim Gündüz <devrim@gunduz.org> - 5.4.1-3PGDG
 - Update LLVM dependencies
 - Remove RHEL 7 support
