@@ -167,7 +167,7 @@ fi
 %endif
 
 %changelog
-* Mon Jul 24 2023 - Devrim Gündüz <devrim@gunduz.org> - 5.4.1-1PGDG
+* Sat Nov 23 2024 - Devrim Gündüz <devrim@gunduz.org> - 5.5.0-1PGDG
 - Update to 5.5.0, per changes described at:
   https://repmgr.org/docs/current/release-5.5.0.html
 - Remove SLES 12 support
