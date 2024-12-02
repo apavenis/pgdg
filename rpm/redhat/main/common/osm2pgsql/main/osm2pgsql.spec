@@ -8,7 +8,7 @@
 
 Summary:	Import map data from OpenStreetMap to a PostgreSQL database
 Name:		%{sname}
-Version:	2.0.0
+Version:	2.0.1
 Release:	1PGDG%{?dist}
 License:	GPLv2
 Source0:	https://github.com/%{sname}-dev/%{sname}/archive/refs/tags/%{version}.tar.gz
@@ -68,9 +68,6 @@ popd
 %{__rm} -rf %{buildroot}
 %{__make} -C "build/%{_vpath_builddir}" %{?_smp_mflags} install \
 	DESTDIR=%{buildroot}
-# We need this for osm2pgsql-gen binary:
-%{__make} -C "build/%{_vpath_builddir}" %{?_smp_mflags} install-gen \
-	DESTDIR=%{buildroot}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -84,6 +81,10 @@ popd
 %{_datadir}/%{sname}/*.style
 
 %changelog
+* Mon Dec 2 2024 Devrim Gündüz <devrim@gunduz.org> - 2.0.1-1PGDG
+- Update to 2.0.1 per changes described at:
+  https://github.com/osm2pgsql-dev/osm2pgsql/releases/tag/2.0.1
+
 * Thu Sep 19 2024 Devrim Gündüz <devrim@gunduz.org> - 2.0.0-1PGDG
 - Update to 2.0.0 per changes described at:
   https://github.com/osm2pgsql-dev/osm2pgsql/releases/tag/2.0.0
