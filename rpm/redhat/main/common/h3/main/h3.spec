@@ -3,8 +3,8 @@
 
 Summary:	A Hexagonal Hierarchical Geospatial Indexing System
 Name:		%{sname}
-Version:	4.1.0
-Release:	2PGDG%{dist}
+Version:	4.2.0
+Release:	1PGDG%{dist}
 License:	Apache
 Source0:	https://github.com/uber/h3/archive/refs/tags/v%{version}.tar.gz
 URL:		https://github.com/uber/h3
@@ -70,13 +70,17 @@ popd
 %{_bindir}/h3ToHier
 %{_bindir}/latLngToCell
 %{_bindir}/localIjToCell
-/usr/lib/libh3.so*
+%{_libdir}/libh3.so*
 
 %files devel
 %{_includedir}/h3api.h
-/usr/lib/cmake/%{sname}/*.cmake
+%{_libdir}/cmake/%{sname}/*.cmake
 
 %changelog
+* Fri Dec 6 2024 Devrim Gündüz <devrim@gunduz.org> - 4.2.0-1PGDG
+- Update to 4.2.0 per changes described at:
+  https://github.com/uber/h3/releases/tag/v4.2.0
+
 * Sun Feb 18 2024 Devrim Gündüz <devrim@gunduz.org> - 4.1.0-2PGDG
 - Fix SLES-15 builds
 
