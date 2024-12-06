@@ -6,7 +6,7 @@
 %endif
 
 Name:		PyGreSQL
-Version:	6.0.1
+Version:	6.1.0
 Release:	1PGDG%{?dist}
 Summary:	A Python client library for PostgreSQL
 
@@ -55,6 +55,10 @@ find -type f -exec chmod 644 {} +
 %{python3_sitearch}/pgdb/*py*
 
 %changelog
+* Fri Dec 6 2024 Devrim Gündüz <devrim@gunduz.org> - 6.1.0-1PGDG
+- Update to 6.1.0 per changes described at:
+  https://pygresql.org/contents/changelog.html
+
 * Thu Oct 26 2023 Devrim Gündüz <devrim@gunduz.org> - 6.0.1-1PGDG
 - Update to 6.0.1 per changes described at:
   https://pygresql.org/contents/changelog.html
