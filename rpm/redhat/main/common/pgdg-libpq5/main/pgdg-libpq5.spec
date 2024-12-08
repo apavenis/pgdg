@@ -7,8 +7,8 @@
 
 Summary:	PostgreSQL Client Library
 Name:		libpq5
-Version:	%{pgmajorversion}.0
-Release:	43PGDG%{?dist}
+Version:	%{pgmajorversion}.2
+Release:	42PGDG%{?dist}
 License:	PostgreSQL
 Url:		https://www.postgresql.org/
 
@@ -216,6 +216,9 @@ find_lang_bins %name-devel.lst	pg_config
 %_libdir/pkgconfig/libpq.pc
 
 %changelog
+* Mon Dec 9 2024 Devrim Gündüz <devrim@gunduz.org> - 17.2-42-1PGDG
+- Update to 17.2
+
 * Thu Oct 17 2024 Devrim Gündüz <devrim@gunduz.org> - 17.0-43-1PGDG
 - Remove .bki and .sql files to avoid conflict with Fedora packages.
 
