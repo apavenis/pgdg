@@ -2,9 +2,9 @@
 %global sname powa
 
 # Powa archivist version
-%global powamajorversion 4
-%global powamidversion 2
-%global powaminorversion 2
+%global powamajorversion 5
+%global powamidversion 0
+%global powaminorversion 0
 
 %global __ospython %{_bindir}/python3
 %if 0%{?fedora} >= 35
@@ -19,7 +19,7 @@
 Summary:	PostgreSQL Workload Analyzer Archivist
 Name:		%{sname}-archivist_%{pgmajorversion}
 Version:	%{powamajorversion}.%{powamidversion}.%{powaminorversion}
-Release:	2PGDG%{?dist}
+Release:	1PGDG%{?dist}
 License:	PostgreSQL
 Source0:	https://github.com/powa-team/powa-archivist/archive/REL_%{powamajorversion}_%{powamidversion}_%{powaminorversion}.tar.gz
 URL:		https://powa.readthedocs.io/
@@ -45,8 +45,8 @@ BuildRequires:	llvm17-devel clang17-devel
 Requires:	llvm17
 %endif
 %if 0%{?fedora} || 0%{?rhel} >= 8
-BuildRequires:	llvm-devel >= 13.0 clang-devel >= 13.0
-Requires:	llvm => 13.0
+BuildRequires:	llvm-devel >= 17.0 clang-devel >= 17.0
+Requires:	llvm => 17.0
 %endif
 
 %description llvmjit
@@ -84,6 +84,10 @@ PATH=%{pginstdir}/bin/:$PATH %{__make} %{?_smp_mflags} install DESTDIR=%{buildro
 %endif
 
 %changelog
+* Mon Dec 9 2024 Devrim Gündüz <devrim@gunduz.org> - 5.0.0-1PGDG
+- Update 5.0.0 per changes described at:
+  https://github.com/powa-team/powa-archivist/releases/tag/REL_5_0_0
+
 * Mon Jul 29 2024 Devrim Gündüz <devrim@gunduz.org> - 4.2.2-2PGDG
 - Update LLVM dependencies
 - Remove RHEL 7 support
