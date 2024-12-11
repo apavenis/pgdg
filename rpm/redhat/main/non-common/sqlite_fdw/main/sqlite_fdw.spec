@@ -1,18 +1,14 @@
 %global sname	sqlite_fdw
 
-# Disable tests by default.
-%{!?runselftest:%global runselftest 0}
-
 %{!?llvm:%global llvm 1}
 
 Summary:	SQLite Foreign Data Wrapper for PostgreSQL
 Name:		%{sname}_%{pgmajorversion}
-Version:	2.4.0
-Release:	4PGDG%{?dist}
+Version:	2.5.0
+Release:	1PGDG%{?dist}
 License:	PostgreSQL
 URL:		https://github.com/pgspider/%{sname}
 Source0:	https://github.com/pgspider/%{sname}/archive/v%{version}.tar.gz
-Patch0:		%{sname}-pg17.patch
 BuildRequires:	postgresql%{pgmajorversion}-devel pgdg-srpm-macros
 BuildRequires:	postgresql%{pgmajorversion}-server sqlite-devel
 Requires:	postgresql%{pgmajorversion}-server
@@ -36,8 +32,8 @@ BuildRequires:	llvm17-devel clang17-devel
 Requires:	llvm17
 %endif
 %if 0%{?fedora} || 0%{?rhel} >= 8
-BuildRequires:	llvm-devel >= 13.0 clang-devel >= 13.0
-Requires:	llvm => 13.0
+BuildRequires:	llvm-devel >= 17.0 clang-devel >= 17.0
+Requires:	llvm => 17.0
 %endif
 
 %description llvmjit
@@ -46,7 +42,6 @@ This packages provides JIT support for sqlite_fdw
 
 %prep
 %setup -q -n %{sname}-%{version}
-%patch -P 0 -p0
 
 %build
 
@@ -74,6 +69,11 @@ USE_PGXS=1 PATH=%{pginstdir}/bin/:$PATH %{__make} %{?_smp_mflags} install DESTDI
 %endif
 
 %changelog
+* Wed Dec 11 2024 Devrim Gündüz <devrim@gunduz.org> - 2.5.0-1PGDG
+- Update to 2.5.0 per changes described at:
+  https://github.com/pgspider/sqlite_fdw/releases/tag/v2.5.0
+- Remove the patch added in 2.4.0-4, now in upstream.
+
 * Mon Sep 23 2024 Devrim Gündüz <devrim@gunduz.org> - 2.4.0-4PGDG
 - Add a patch to fix builds on PostgreSQL 17.
 
