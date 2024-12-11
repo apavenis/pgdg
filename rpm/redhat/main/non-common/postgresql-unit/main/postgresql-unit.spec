@@ -4,7 +4,7 @@
 
 Summary:	SI Units for PostgreSQL
 Name:		%{sname}_%{pgmajorversion}
-Version:	7.9
+Version:	7.10
 Release:	1PGDG%{?dist}
 License:	BSD
 Source0:	https://github.com/ChristophBerg/%{sname}/archive/%{version}.tar.gz
@@ -23,19 +23,19 @@ pre-built grammar files are used if only bison 2 is available).
 
 %if %llvm
 %package llvmjit
-Summary:	Just-in-time compilation support for xxx
+Summary:	Just-in-time compilation support for postgresql-unit
 Requires:	%{name}%{?_isa} = %{version}-%{release}
 %if 0%{?suse_version} >= 1500
 BuildRequires:	llvm17-devel clang17-devel
 Requires:	llvm17
 %endif
 %if 0%{?fedora} || 0%{?rhel} >= 8
-BuildRequires:	llvm-devel >= 13.0 clang-devel >= 13.0
-Requires:	llvm => 13.0
+BuildRequires:	llvm-devel >= 17.0 clang-devel >= 17.0
+Requires:	llvm => 17.0
 %endif
 
 %description llvmjit
-This packages provides JIT support for xxx
+This packages provides JIT support for postgresql-unit
 %endif
 
 %prep
@@ -67,6 +67,10 @@ USE_PGXS=1 PATH=%{pginstdir}/bin/:$PATH %{__make} %{?_smp_mflags} install DESTDI
 %endif
 
 %changelog
+* Wed Dec 11 2024 Devrim Gündüz <devrim@gunduz.org> - 7.10-1PGDG
+- Update to 7.10 per changes described at:
+  https://github.com/df7cb/postgresql-unit/releases/tag/7.10
+
 * Mon Sep 16 2024 Devrim Gündüz <devrim@gunduz.org> - 7.9-1PGDG
 - Update to 7.9 per changes described at:
   https://github.com/df7cb/postgresql-unit/releases/tag/7.9
