@@ -4,7 +4,7 @@
 
 Summary:	Run periodic jobs in PostgreSQL
 Name:		%{sname}_%{pgmajorversion}
-Version:	1.6.4
+Version:	1.6.5
 Release:	1PGDG%{dist}
 License:	AGPLv3
 Source0:	https://github.com/citusdata/%{sname}/archive/v%{version}.tar.gz
@@ -14,35 +14,19 @@ Requires:	postgresql%{pgmajorversion}-server
 Requires(post):	%{_sbindir}/update-alternatives
 Requires(postun):	%{_sbindir}/update-alternatives
 
-%if 0%{?suse_version} >= 1315 && 0%{?suse_version} <= 1499
-Requires:	libopenssl1_0_0
-%else
 %if 0%{?suse_version} >= 1500
 Requires:	libopenssl1_1
+BuildRequires:	libopenssl-devel openldap2-devel
 %else
 Requires:	openssl-libs >= 1.0.2k
-%endif
-%endif
-
-%if 0%{?suse_version} >= 1315 && 0%{?suse_version} <= 1499
-BuildRequires:	libopenssl-devel
-%else
-BuildRequires:	openssl-devel
-%endif
-
-%if 0%{?suse_version}
-%if 0%{?suse_version} >= 1315
-BuildRequires:	openldap2-devel
-%endif
-%else
-BuildRequires:	openldap-devel
+BuildRequires:	openssl-devel openldap-devel
 %endif
 
 %description
 pg_cron is a simple cron-based job scheduler for PostgreSQL
-(9.5 or higher) that runs inside the database as an extension.
-It uses the same syntax as regular cron, but it allows you to
-schedule PostgreSQL commands directly from the database.
+that runs inside the database as an extension. It uses the
+same syntax as regular cron, but it allows you to schedule
+PostgreSQL commands directly from the database.
 
 %if %llvm
 %package llvmjit
@@ -53,8 +37,8 @@ BuildRequires:	llvm17-devel clang17-devel
 Requires:	llvm17
 %endif
 %if 0%{?fedora} || 0%{?rhel} >= 8
-BuildRequires:	llvm-devel >= 13.0 clang-devel >= 13.0
-Requires:	llvm => 13.0
+BuildRequires:	llvm-devel >= 17.0 clang-devel >= 17.0
+Requires:	llvm => 17.0
 %endif
 
 %description llvmjit
@@ -89,6 +73,11 @@ PATH=%{pginstdir}/bin/:$PATH %make_install
 %endif
 
 %changelog
+* Thu Dec 12 2024 Devrim Gündüz <devrim@gunduz.org> - 1.6.5-1PGDG
+- Update to 1.6.5, per changes described at:
+  https://github.com/citusdata/pg_cron/releases/tag/v1.6.5
+- Remove SLES 12 bits and also update LLVM dependencies.
+
 * Fri Aug 16 2024 Devrim Gündüz <devrim@gunduz.org> - 1.6.4-1PGDG
 - Update to 1.6.4, per changes described at:
   https://github.com/citusdata/pg_cron/releases/tag/v1.6.4
