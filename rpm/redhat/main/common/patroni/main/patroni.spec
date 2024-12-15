@@ -9,9 +9,9 @@ Name:		patroni
 Version:	4.0.4
 Release:	1PGDG%{?dist}
 License:	MIT
-Source0:	https://github.com/zalando/%{name}/archive/v%{version}.tar.gz
+Source0:	https://github.com/patroni/%{name}/archive/v%{version}.tar.gz
 Source1:	%{name}.service
-URL:		https://github.com/zalando/%{name}
+URL:		https://github.com/patroni/%{name}
 
 BuildArch:	noarch
 
@@ -173,6 +173,9 @@ fi
 %files -n %{name}-zookeeper
 
 %changelog
+* Mon Dec 16 2024 Devrim Gündüz <devrim@gunduz.org> - 4.0.4-2PGDG
+- Update URL
+
 * Fri Nov 22 2024 Devrim Gündüz <devrim@gunduz.org> - 4.0.4-1PGDG
 - Update to 4.0.4, per changes described at:
   https://github.com/zalando/patroni/blob/master/docs/releases.rst#version-404
