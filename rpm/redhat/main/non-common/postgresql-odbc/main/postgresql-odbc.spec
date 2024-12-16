@@ -1,9 +1,9 @@
-%global odbcgittag 17_00_0003
+%global odbcgittag 17_00_0004
 
 Name:		postgresql%{pgmajorversion}-odbc
 Summary:	PostgreSQL ODBC driver
 Version:	17.00.0004
-Release:	1PGDG%{?dist}
+Release:	2PGDG%{?dist}
 License:	LGPLv2
 URL:		https://odbc.postgresql.org/
 
@@ -43,7 +43,7 @@ PostgreSQL system via ODBC (Open Database Connectivity).
 %setup -q -n psqlodbc-REL-%{odbcgittag}
 
 %ifarch ppc64le
-sed -i "s:elf64ppc:elf64lppc:g" configure
+sed -i "s:elf64ppc:elf64lppc:g" configure.ac
 %endif
 
 # Some missing macros. Courtesy Owen Taylor <otaylor@redhat.com>.
@@ -85,6 +85,10 @@ popd
 %license license.txt
 
 %changelog
+* Mon Dec 16 2024 Devrim Gündüz <devrim@gunduz.org> - 17.00.0004-2PGDG
+- Fix version number in spec file and really update to 17.00.0004 :(
+- Fix ppc64le builds.
+
 * Wed Dec 11 2024 Devrim Gündüz <devrim@gunduz.org> - 17.00.0004-1PGDG
 - Update to 17.00.0004 per changes described at:
   https://github.com/postgresql-interfaces/psqlodbc/releases/tag/REL-17_00_0004
