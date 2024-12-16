@@ -13,7 +13,7 @@ Requires:	CGAL => 4.7
 BuildRequires:	CGAL-devel >= 5.4
 %endif
 
-%if 0%{?rhel} && 0%{?rhel} == 9
+%if 0%{?rhel} && 0%{?rhel} >= 9
 Version:	2.0.0
 BuildRequires:	CGAL-devel >= 5.6
 %endif
@@ -23,7 +23,7 @@ Version:	2.0.0
 BuildRequires:	CGAL-devel >= 5.6
 %endif
 
-Release:	1PGDG%{?dist}
+Release:	2PGDG%{?dist}
 License:	GLPLv2
 Source:		https://gitlab.com/sfcgal/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.gz
 
@@ -122,6 +122,9 @@ cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 %{_libdir}/libSFCGAL.so*
 
 %changelog
+* Mon Dec 16 2024 Devrim Gunduz <devrim@gunduz.org> - 2.0.0-2PGDG
+- Add RHEL 10 support
+
 * Thu Oct 10 2024 Devrim Gunduz <devrim@gunduz.org> - 2.0.0-1PGDG
 - Update to 2.0.0 on RHEL and Fedora per changes described at:
   https://gitlab.com/sfcgal/SFCGAL/-/releases/v2.0.0
