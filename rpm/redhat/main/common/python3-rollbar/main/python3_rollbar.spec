@@ -1,7 +1,7 @@
 %global sname	rollbar
 %global __ospython %{_bindir}/python3
 
-%if 0%{?fedora} >= 35
+%if 0%{?fedora} >= 40 || 0%{?rhel} >= 10
 %{expand: %%global py3ver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:4])"`)}
 %else
 %{expand: %%global py3ver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
@@ -10,7 +10,7 @@
 Name:		python3-%{sname}
 Summary:	Python notifier for reporting exceptions, errors, and log messages to Rollbar.
 Version:	0.16.2
-Release:	1%{?dist}
+Release:	2PGDG%{?dist}
 URL:		https://github.com/%{sname}/py%{sname}
 Source0:	https://github.com/%{sname}/py%{sname}/archive/v%{version}.tar.gz
 License:	Python-2.0
@@ -84,6 +84,10 @@ Python versions.
 %{python3_sitelib}/%{sname}/test/*/__pycache__/*.py*
 
 %changelog
+* Tue Dec 17 2024 - Devrim Gündüz <devrim@gunduz.org> 0.16.2-2PGDG
+- Add RHEL 10 support
+- Add PGDG suffix
+
 * Mon Feb 7 2022 - Devrim Gündüz <devrim@gunduz.org> 0.16.2-1
 - Update to 0.16.2
 
