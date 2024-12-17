@@ -5,7 +5,7 @@
 %global	powawebdir  %{_datadir}/%{name}
 
 %global __ospython %{_bindir}/python3
-%if 0%{?fedora} >= 35
+%if 0%{?fedora} >= 40 || 0%{?rhel} >= 10
 %{expand: %%global pyver %(echo `%{__ospython} -c "import sys; sys.stdout.write(sys.version[:4])"`)}
 %else
 %{expand: %%global pyver %(echo `%{__ospython} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
@@ -15,7 +15,7 @@
 Summary:	The user interface of PoWA
 Name:		%{sname}
 Version:	5.0.1
-Release:	1PGDG%{?dist}
+Release:	2PGDG%{?dist}
 License:	BSD
 Source0:	https://github.com/powa-team/powa-web/archive/refs/tags/%{version}.tar.gz
 Source2:        %{sname}.service
@@ -74,6 +74,9 @@ This is the user interface of POWA.
 %{_unitdir}/%{sname}.service
 
 %changelog
+* Tue Dec 17 2024 Devrim Gunduz <devrim@gunduz.org> - 5.0.1-2PGDG
+- Add RHEL 10 support
+
 * Mon Dec 9 2024 Devrim Gunduz <devrim@gunduz.org> - 5.0.1-1PGDG
 - Update to 5.0.1 for changes described at
   https://github.com/powa-team/powa-web/releases/tag/5.0.1
