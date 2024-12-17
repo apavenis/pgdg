@@ -32,7 +32,6 @@ echo "${green}Building $packagename on $os for extras repo.${reset}"
 sleep 1
        	cd ~/git/pgrpms/rpm/redhat/main/extras/$packagename/$git_os
         time make extrasbuild
-        cd
 	# Get the package version after building the package so that we get the latest version:
 	packageVersion=`rpmspec --define "pgmajorversion ${pgAlphaVersion}" -q --qf "%{name}: %{Version}\n" *.spec |head -n 1 | awk -F ': ' '{print $2}'`
 	sign_package pgdg.$osshort.extras
