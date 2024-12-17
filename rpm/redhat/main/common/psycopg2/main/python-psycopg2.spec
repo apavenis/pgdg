@@ -2,9 +2,14 @@
 %global pname python-%{sname}
 
 %global ppg2majver 2
+%if 0%{?rhel} == 8
+# DO NOT BUMP UP THESE VALUES FOR RHEL 8 #
+%global ppg2midver 9
+%global ppg2minver 6
+%else
 %global ppg2midver 9
 %global ppg2minver 10
-
+%endif
 %{!?with_docs:%global with_docs 0}
 
 %if 0%{?rhel} == 8
@@ -25,7 +30,7 @@
 Summary:	A PostgreSQL database adapter for Python 3
 Name:		python3-%{sname}
 Version:	%{ppg2majver}.%{ppg2midver}.%{ppg2minver}
-Release:	2PGDG%{?dist}
+Release:	3PGDG%{?dist}
 # The exceptions allow linking to OpenSSL and PostgreSQL's libpq
 License:	LGPLv3+ with exceptions
 Url:		https://www.psycopg.org
@@ -122,6 +127,10 @@ done
 %endif
 
 %changelog
+* Tue Dec 17 2024 Devrim Gündüz <devrim@gunduz.org> - 2.9.10-3PGDG
+- psycopg2 > 2.9.6 does not build on RHEL 8. So add a permanent guard
+  against accidental builds on RHEL 8 to prevent breakage.
+
 * Tue Dec 17 2024 Devrim Gündüz <devrim@gunduz.org> - 2.9.10-2PGDG
 - Add RHEL 10 support
 
