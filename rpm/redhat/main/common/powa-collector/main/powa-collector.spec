@@ -3,7 +3,7 @@
 
 %global __ospython %{_bindir}/python3
 
-%if 0%{?fedora} >= 37
+%if 0%{?fedora} >= 37 || 0%{?rhel} >= 10
 %{expand: %%global pyver %(echo `%{__ospython} -c "import sys; sys.stdout.write(sys.version[:4])"`)}
 %else
 %{expand: %%global pyver %(echo `%{__ospython} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
@@ -13,7 +13,7 @@
 
 Name:		powa-collector
 Version:	1.3.0
-Release:	1PGDG%{?dist}
+Release:	2PGDG%{?dist}
 Summary:	POWA data collector daemon
 License:	PostgreSQL
 URL:		https://github.com/powa-team/%{name}
@@ -90,6 +90,9 @@ database (in the powa_servers table).
 %{python3_sitelib}/%{pname}/__pycache__/*.py*
 
 %changelog
+* Tue Dec 17 2024 Devrim Gündüz <devrim@gunduz.org> - 1.3.0-2PGDG
+- Add RHEL 10 support
+
 * Sun Nov 3 2024 Devrim Gündüz <devrim@gunduz.org> - 1.3.0-1PGDG
 - Update to 1.3.0 per changes described at:
   https://github.com/powa-team/powa-collector/releases/tag/1.3.0
