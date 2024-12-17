@@ -12,13 +12,12 @@
 %endif
 %{!?with_docs:%global with_docs 0}
 
+%global __ospython %{_bindir}/python3
+
 %if 0%{?rhel} == 8
-%global python3_runtimes python3.9
-%global __ospython %{_bindir}/python3.9
 %global python3_sitearch %(%{__ospython} -Ic "import sysconfig; print(sysconfig.get_path('platlib', vars={'platbase': '%{_prefix}', 'base': '%{_prefix}'}))")
 %else
 %global python3_runtimes python3
-%global __ospython %{_bindir}/python3
 %endif
 
 %if 0%{?fedora} >= 40 || 0%{?rhel} >= 10
@@ -37,11 +36,7 @@ Url:		https://www.psycopg.org
 Source0:	https://github.com/psycopg/psycopg2/archive/refs/tags/%{ppg2majver}.%{ppg2midver}.%{ppg2minver}.tar.gz
 
 BuildRequires:	postgresql%{pgmajorversion}-devel pgdg-srpm-macros
-%if 0%{?rhel} == 8
-BuildRequires:	python39-devel
-%else
 BuildRequires:	python3-devel
-%endif
 
 Requires:	libpq5 >= 10.0
 
