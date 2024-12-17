@@ -86,7 +86,7 @@ Python versions.
 %changelog
 * Tue Dec 17 2024 - Devrim Gündüz <devrim@gunduz.org> 0.16.2-2PGDG
 - Add RHEL 10 support
-- Add PGDG suffix
+- Add PGDG branding
 
 * Mon Feb 7 2022 - Devrim Gündüz <devrim@gunduz.org> 0.16.2-1
 - Update to 0.16.2
