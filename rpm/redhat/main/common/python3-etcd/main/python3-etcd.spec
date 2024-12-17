@@ -3,7 +3,7 @@
 
 Name:		python3-%{modname}
 Version:	0.4.5
-Release:	45%{?dist}
+Release:	46PGDG%{?dist}
 Summary:	A python client library for etcd
 
 License:	MIT
@@ -18,10 +18,6 @@ BuildArch:	noarch
 # Also https://fedoraproject.org/wiki/Packaging:Guidelines#Noarch_with_Unported_Dependencies
 ExclusiveArch:	noarch %{ix86} x86_64 %{arm} aarch64 ppc64le s390x powerpc64le
 
-%if 0%{?rhel} == 7
-Requires:	python36-urllib3 >= 1.7.1
-Requires:	python36-dns >= 1.13.0
-%endif
 %if 0%{?fedora} ||0%{?rhel} >= 8
 Requires:	python3-urllib3 >= 1.7.1
 Requires:	python3-dns >= 1.13.0
@@ -54,6 +50,10 @@ election.
 %{python3_sitelib}/*
 
 %changelog
+* Wed Jan 10 2024 Devrim Gündüz <devrim@gunduz.org> - 0.4.5-46PGDG
+- Remove RHEL 7 support
+- Add PGDG branding
+
 * Wed Jan 10 2024 Devrim Gündüz <devrim@gunduz.org> - 0.4.5-45
 - Add explicit dependencies for RHEL >= 8
 
