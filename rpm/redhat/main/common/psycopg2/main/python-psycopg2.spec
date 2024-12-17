@@ -16,7 +16,7 @@
 %global __ospython %{_bindir}/python3
 %endif
 
-%if 0%{?fedora} >= 35
+%if 0%{?fedora} >= 40 0%{?rhel} >= 10
 %{expand: %%global py3ver %(echo `%{__ospython} -c "import sys; sys.stdout.write(sys.version[:4])"`)}
 %else
 %{expand: %%global py3ver %(echo `%{__ospython} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
@@ -25,7 +25,7 @@
 Summary:	A PostgreSQL database adapter for Python 3
 Name:		python3-%{sname}
 Version:	%{ppg2majver}.%{ppg2midver}.%{ppg2minver}
-Release:	1PGDG%{?dist}
+Release:	2PGDG%{?dist}
 # The exceptions allow linking to OpenSSL and PostgreSQL's libpq
 License:	LGPLv3+ with exceptions
 Url:		https://www.psycopg.org
@@ -122,6 +122,9 @@ done
 %endif
 
 %changelog
+* Tue Dec 17 2024 Devrim Gündüz <devrim@gunduz.org> - 2.9.10-2PGDG
+- Add RHEL 10 support
+
 * Wed Nov 20 2024 Devrim Gündüz <devrim@gunduz.org> - 2.9.10-1PGDG
 - Update to 2.9.10 per changes descrihed at:
   https://github.com/psycopg/psycopg2/releases/tag/2.9.10
