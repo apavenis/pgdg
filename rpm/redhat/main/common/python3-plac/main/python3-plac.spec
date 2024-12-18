@@ -1,5 +1,5 @@
 %global sname plac
-%if 0%{?fedora} >= 35
+%if 0%{?fedora} >= 40 || 0%{?rhel} >= 10
 %{expand: %%global py3ver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:4])"`)}
 %else
 %{expand: %%global py3ver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
@@ -10,7 +10,7 @@
 
 Name:		python3-plac
 Version:	1.3.5
-Release:	1PGDG%{?dist}
+Release:	2PGDG%{?dist}
 Summary:	The smartest command line arguments parser in the world
 License:	BSD-2-Clause
 URL:		https://github.com/ialbert/plac
@@ -61,6 +61,9 @@ in your source code.}
 %{python3_sitelib}/__pycache__/%{sname}*pyc
 
 %changelog
+* Wed Dec 18 2024 Devrim Gündüz <devrim@gunduz.org> - 1.3.5-2PGDG
+- Add RHEL 10 support
+
 * Tue Feb 20 2024 Devrim Gündüz <devrim@gunduz.org> - 1.3.5-1PGDG
 - Initial packaging for the PostgreSQL RPM repository to support
   pg_statviz on RHEL 8 and SLES 15.
