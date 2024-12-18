@@ -44,7 +44,7 @@
 Summary:	Geographic Information Systems Extensions to PostgreSQL
 Name:		%{sname}%{postgiscurrmajorversion}_%{pgmajorversion}
 Version:	%{postgismajorversion}.0
-Release:	3PGDG%{?dist}
+Release:	4PGDG%{?dist}
 License:	GPLv2+
 Source0:	https://download.osgeo.org/postgis/source/postgis-%{version}.tar.gz
 Source2:	https://download.osgeo.org/postgis/docs/postgis-%{version}-en.pdf
@@ -365,7 +365,10 @@ fi
 %endif
 
 %changelog
-* Sun Mov 3 2024 Devrim Gündüz <devrim@gunduz.org> - 3.5.0-3PGDG
+* Wed Dec 18 2024 Devrim Gündüz <devrim@gunduz.org> - 3.5.0-4PGDG
+- Fix changelog date
+
+* Sun Nov 3 2024 Devrim Gündüz <devrim@gunduz.org> - 3.5.0-3PGDG
 - Install man files to another location to avoid packaging conflict
   with other PostGIS RPMs.
 
