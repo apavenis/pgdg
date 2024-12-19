@@ -245,7 +245,11 @@ Requires:	geos%{geosmajorversion} ogdi%{ogdimajorversion}
 Requires:	netcdf >= 4.7 gpsbabel
 Requires:	libgeotiff%{libgeotiffmajorversion}-devel
 Requires:	libspatialite%{libspatialitemajorversion}-devel
+%if 0%{?rhel} == 8
 Requires:	libcurl >= 7.68
+Requires: libtiff >= 4.1
+Requires: sqlite >= 3.31
+%endif
 
 %if 0%{?suse_version}
 %if 0%{?suse_version} <= 1499
