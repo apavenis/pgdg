@@ -11,15 +11,9 @@
 %global geosfullversion %geos313fullversion
 %global geosmajorversion %geos313majorversion
 %global geosinstdir %geos313instdir
-%if 0%{?rhel} == 8
-%global gdalfullversion %gdal38fullversion
-%global gdalmajorversion %gdal38majorversion
-%global gdalinstdir %gdal38instdir
-%else
-%global gdalfullversion %gdal39fullversion
-%global gdalmajorversion %gdal39majorversion
-%global gdalinstdir %gdal39instdir
-%endif
+%global gdalfullversion %gdal310fullversion
+%global gdalmajorversion %gdal310majorversion
+%global gdalinstdir %gdal310instdir
 %global projmajorversion %proj95majorversion
 %global projfullversion %proj95fullversion
 %global projinstdir %proj95instdir
