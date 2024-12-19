@@ -55,7 +55,7 @@
 
 Name:		%{sname}310
 Version:	3.10.0
-Release:	1PGDG%{?dist}
+Release:	1.1.fmi%{?dist}
 Summary:	GIS file format library
 License:	MIT
 URL:		https://www.gdal.org
@@ -201,7 +201,7 @@ BuildRequires:	libshp-devel libcurl-devel >= 7.68
 BuildRequires:	python311-devel
 %else
 BuildRequires:	shapelib-devel curl-devel >= 7.68
-BuildRequires:	python3-devel >= 3.8
+BuildRequires:	%{python3_devel} >= 3.8
 BuildRequires:	openjpeg2-devel >= 2.3.1
 
 %endif
@@ -245,6 +245,7 @@ Requires:	geos%{geosmajorversion} ogdi%{ogdimajorversion}
 Requires:	netcdf >= 4.7 gpsbabel
 Requires:	libgeotiff%{libgeotiffmajorversion}-devel
 Requires:	libspatialite%{libspatialitemajorversion}-devel
+Requires:	libcurl >= 7.68
 
 %if 0%{?suse_version}
 %if 0%{?suse_version} <= 1499
@@ -280,6 +281,7 @@ This package contains the API documentation for %{name}.
 
 %package python3
 %{?py_provide:%py_provide python3-gdal}
+Provides:	python3-gdal
 Summary:	Python modules for the GDAL file format library
 Requires:	python3-numpy
 Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
