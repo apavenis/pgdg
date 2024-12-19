@@ -11,7 +11,7 @@
 
 Name:		%{sname}%{libgeotiffversion}
 Version:	1.7.3
-Release:	2PGDG%{?dist}
+Release:	2.1PGDG%{?dist}
 Summary:	GeoTIFF format library
 License:	MIT
 URL:		https://github.com/OSGeo/%{sname}
@@ -117,7 +117,7 @@ EOF
 %{libgeotiff17instdir}/bin/geotifcp
 %{libgeotiff17instdir}/bin/listgeo
 %{libgeotiff17instdir}/bin/makegeo
-%{libgeotiff17instdir}/lib/*
+%{libgeotiff17instdir}/lib/*.so.*
 %{libgeotiff17instdir}/man/man1/listgeo.1
 %{libgeotiff17instdir}/man/man1/geotifcp.1
 %{libgeotiff17instdir}/man/man1/applygeo.1
@@ -128,9 +128,14 @@ EOF
 %dir %{libgeotiff17instdir}/include
 %attr(0644,root,root) %{libgeotiff17instdir}/include/*.h
 %attr(0644,root,root) %{libgeotiff17instdir}/include/*.inc
-%{libgeotiff17instdir}/lib/pkgconfig/%{name}.pc
+%{libgeotiff17instdir}/lib/*.so
+%{libgeotiff17instdir}/lib/cmake
+%{libgeotiff17instdir}/lib/pkgconfig
 
 %changelog
+* Thu Dec 19 2024 Andris Pavenis <andris.pavenis@fmi.fi> - 1.7.3-2.1PGDG
+- Put development files into devel package instead of binary one
+
 * Thu Sep 19 2024 Devrim Gündüz <devrim@gunduz.org> - 1.7.3-2PGDG
 - Rebuild against PROJ 9.5
 
