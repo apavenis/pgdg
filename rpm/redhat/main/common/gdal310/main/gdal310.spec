@@ -99,7 +99,7 @@ BuildRequires:	jpackage-utils
 BuildRequires:	libarchive-devel >= 3.5.0
 %endif
 %ifnarch %{ppc64le}
-%if 0%{?rhel} || 0%{?fedora}
+%if 0%{?rhel} >= 9 || 0%{?fedora}
 BuildRequires:	libarrow-devel
 %endif
 BuildRequires:	libdeflate-devel
