@@ -23,6 +23,12 @@
 %global pyver 3.9
 %endif
 
+%if 0%{?rhel} == 8
+%global python3_devel python39-devel
+%else
+%global python3_devel python3-devel
+%endif
+
 %global bashcompletiondir %(pkg-config --variable=compatdir bash-completion)
 
 %global geosfullversion %geos313fullversion
