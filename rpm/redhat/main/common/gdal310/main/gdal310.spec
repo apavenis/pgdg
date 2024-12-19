@@ -491,6 +491,11 @@ done
 %endif
 
 %changelog
+* Thu Dec 19 2024 Andris Pavenis <andris.pavenis@fmi.fi> - 3.10.0-2.fmi
+- Support also RHEL8 build when newer curl, sqlite and tiff are available
+- Require binary packages of libgeotiff and libspatialite instead of devel packages for gdal310-libs
+- Remove build require libarrow in case of RHEL8 (fails to build due to conflict)
+
 * Sat Nov 9 2024 Devrim Gunduz <devrim@gunduz.org> - 3.10.0-1PGDG
 - Initial 3.10.0 packaging per changes described at:
   https://github.com/OSGeo/gdal/releases/tag/v3.10.0
