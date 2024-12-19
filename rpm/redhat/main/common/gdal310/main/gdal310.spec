@@ -55,7 +55,7 @@
 
 Name:		%{sname}310
 Version:	3.10.0
-Release:	1.1.fmi%{?dist}
+Release:	2.fmi%{?dist}
 Summary:	GIS file format library
 License:	MIT
 URL:		https://www.gdal.org
@@ -243,8 +243,8 @@ Provides:	bundled(g2lib) = 1.6.0
 Provides:	bundled(degrib) = 2.14
 Requires:	geos%{geosmajorversion} ogdi%{ogdimajorversion}
 Requires:	netcdf >= 4.7 gpsbabel
-Requires:	libgeotiff%{libgeotiffmajorversion}-devel
-Requires:	libspatialite%{libspatialitemajorversion}-devel
+Requires:	libgeotiff%{libgeotiffmajorversion}
+Requires:	libspatialite%{libspatialitemajorversion}
 %if 0%{?rhel} == 8
 Requires:	libcurl >= 7.68
 Requires: libtiff >= 4.1
