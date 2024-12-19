@@ -11,8 +11,8 @@ BuildArch:	noarch
 %endif
 
 Name:		pgdg-srpm-macros
-Version:	1.0.44
-Release:	1PGDG%{?dist}
+Version:	1.0.44.1
+Release:	1.fmi
 Summary:	SRPM macros for building PostgreSQL PGDG Packages
 
 License:	PostgreSQL
