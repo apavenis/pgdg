@@ -245,6 +245,8 @@ Requires:	libcurl >= 7.68
 Requires: libtiff >= 4.1
 Requires: sqlite >= 3.31
 %endif
+# FMI: ensure that versions previosly used at FMI are removed
+Obsoletes:	gdal38-libs gdal35-libs
 
 %if 0%{?suse_version}
 %if 0%{?suse_version} <= 1499
