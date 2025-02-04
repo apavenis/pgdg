@@ -5,7 +5,7 @@
 
 Name:		%{sname}95
 Version:	9.5.1
-Release:	1PGDG%{?dist}
+Release:	1.1.fmi%{?dist}
 Epoch:		0
 Summary:	Cartographic projection software (PROJ)
 
@@ -16,6 +16,8 @@ Source2:	%{name}-pgdg-libs.conf
 
 BuildRequires:	sqlite-devel >= 3.7 libcurl-devel cmake
 BuildRequires:	libtiff-devel pgdg-srpm-macros >= 1.0.44
+# FMI: presence of earlier versions may cause problems due to wrong shared library picked
+Obsoletes:      proj94
 
 # Default GCC version on SLES 15 is not sufficient to build PROJ 9.4,
 # so use a newer one:
