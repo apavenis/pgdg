@@ -7,7 +7,7 @@
 
 Name:		%{sname}%{_geosversion}
 Version:	3.13.0
-Release:	1PGDG%{?dist}
+Release:	1.1.fmi%{?dist}
 Summary:	GEOS is a C++ port of the Java Topology Suite
 
 License:	LGPLv2
@@ -21,6 +21,8 @@ BuildRequires:	cmake3 >= 3.15
 %endif
 BuildRequires:	libtool gcc-c++ pgdg-srpm-macros
 Provides:	geos%{_geosversion}-python >= %{version}
+# FMI: Ensure that previous version is removed
+Obsoletes:	geos312
 
 %description
 GEOS (Geometry Engine - Open Source) is a C++ port of the Java Topology
