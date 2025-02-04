@@ -7,14 +7,14 @@
 %pgdg_set_gis_variables
 
 # Override some variables. PostGIS 3.5 is best served with GeOS 3.13,
-# PROJ 9.5 and GDAL 3.10 (except on RHEL 8 where GDAL 3.8 is available):
+# PROJ 9.5 and GDAL 3.10:
 %global geosfullversion %geos313fullversion
 %global geosmajorversion %geos313majorversion
 %global geosinstdir %geos313instdir
 %if 0%{?rhel} == 8
-%global gdalfullversion %gdal38fullversion
-%global gdalmajorversion %gdal38majorversion
-%global gdalinstdir %gdal38instdir
+%global gdalfullversion %gdal310fullversion
+%global gdalmajorversion %gdal310majorversion
+%global gdalinstdir %gdal310instdir
 %else
 %global gdalfullversion %gdal310fullversion
 %global gdalmajorversion %gdal310majorversion
@@ -44,7 +44,7 @@
 Summary:	Geographic Information Systems Extensions to PostgreSQL
 Name:		%{sname}%{postgiscurrmajorversion}_%{pgmajorversion}
 Version:	%{postgismajorversion}.2
-Release:	2PGDG%{?dist}
+Release:	2.1.fmi%{?dist}
 License:	GPLv2+
 Source0:	https://download.osgeo.org/postgis/source/postgis-%{version}.tar.gz
 Source2:	https://download.osgeo.org/postgis/docs/postgis-%{version}-en.pdf
@@ -119,6 +119,8 @@ Requires(post):	%{_sbindir}/update-alternatives
 Provides:	%{sname} = %{version}-%{release}
 Obsoletes:	%{sname}3_%{pgmajorversion} <= %{postgismajorversion}.0-1
 Provides:	%{sname}3_%{pgmajorversion} => %{postgismajorversion}.0
+# FMI: obsolete postgis34 to get it removed
+Obsoletes:	%{sname}34-%{pgmajorversion}
 
 %description
 PostGIS adds support for geographic objects to the PostgreSQL object-relational
