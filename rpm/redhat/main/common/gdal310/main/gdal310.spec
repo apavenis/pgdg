@@ -19,6 +19,12 @@
 %global pyver 3.9
 %endif
 
+%if 0%{?rhel} == 8
+%global python3_devel python39-devel
+%else
+%global python3_devel python3-devel
+%endif
+
 %global bashcompletiondir %(pkg-config --variable=compatdir bash-completion)
 
 %global geosfullversion %geos313fullversion
@@ -45,7 +51,7 @@
 
 Name:		%{sname}310
 Version:	3.10.1
-Release:	2PGDG%{?dist}
+Release:	2.1.fmi%{?dist}
 Summary:	GIS file format library
 License:	MIT
 URL:		https://www.gdal.org
@@ -90,7 +96,7 @@ BuildRequires:	jpackage-utils
 BuildRequires:	libarchive-devel >= 3.5.0
 %endif
 %ifnarch %{ppc64le}
-%if 0%{?rhel} || 0%{?fedora}
+%if 0%{?rhel} >= 9 || 0%{?fedora}
 BuildRequires:	libarrow-devel
 %endif
 BuildRequires:	libdeflate-devel
@@ -190,7 +196,7 @@ BuildRequires:	libshp-devel libcurl-devel >= 7.68
 BuildRequires:	python311-devel
 %else
 BuildRequires:	shapelib-devel curl-devel >= 7.68
-BuildRequires:	python3-devel >= 3.8
+BuildRequires:	%{python3_devel} >= 3.8
 BuildRequires:	openjpeg2-devel >= 2.3.1
 
 %endif
@@ -232,8 +238,13 @@ Provides:	bundled(g2lib) = 1.6.0
 Provides:	bundled(degrib) = 2.14
 Requires:	geos%{geosmajorversion} ogdi%{ogdimajorversion}
 Requires:	netcdf >= 4.7 gpsbabel
-Requires:	libgeotiff%{libgeotiffmajorversion}-devel
-Requires:	libspatialite%{libspatialitemajorversion}-devel
+Requires:	libgeotiff%{libgeotiffmajorversion}
+Requires:	libspatialite%{libspatialitemajorversion}
+%if 0%{?rhel} == 8
+Requires:	libcurl >= 7.68
+Requires: libtiff >= 4.1
+Requires: sqlite >= 3.31
+%endif
 
 %if 0%{?suse_version}
 %if 0%{?suse_version} <= 1499
@@ -269,6 +280,7 @@ This package contains the API documentation for %{name}.
 
 %package python3
 %{?py_provide:%py_provide python3-gdal}
+Provides:	python3-gdal
 Summary:	Python modules for the GDAL file format library
 Requires:	python3-numpy
 Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
@@ -475,6 +487,11 @@ done
 %endif
 
 %changelog
+* Tue Feb  4 2025 Andris Pavenis <andris.pavenis@fmi.fi> - 3.10.1-2.1.fmi
+- Support also RHEL8 build when newer curl, sqlite and tiff are available
+- Require binary packages of libgeotiff and libspatialite instead of devel packages for gdal310-libs
+- Remove build require libarrow in case of RHEL8 (fails to build due to conflict)
+
 * Thu Jan 30 2025 Devrim Gunduz <devrim@gunduz.org> - 3.10.1-2PGDG
 - g2clib is not available (yet) on RHEL 10 so disable it on this platform.
 
