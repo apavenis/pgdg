@@ -6,6 +6,9 @@
 
 %pgdg_set_gis_variables
 
+# https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
+%global __brp_check_rpaths %{nil}
+
 # Override some variables. PostGIS 3.5 is best served with GeOS 3.13,
 # PROJ 9.5 and GDAL 3.10:
 %global geosfullversion %geos313fullversion

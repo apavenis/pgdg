@@ -4,6 +4,9 @@
 
 %pgdg_set_gis_variables
 
+# https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
+%global __brp_check_rpaths %{nil}
+
 # Override PROJ:
 %global projmajorversion %proj95majorversion
 %global projfullversion %proj95fullversion

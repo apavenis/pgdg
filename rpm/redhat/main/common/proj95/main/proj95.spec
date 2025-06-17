@@ -3,6 +3,9 @@
 
 %pgdg_set_gis_variables
 
+# https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
+%global __brp_check_rpaths %{nil}
+
 Name:		%{sname}95
 Version:	9.5.1
 Release:	1.1.fmi%{?dist}

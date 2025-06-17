@@ -5,6 +5,9 @@
 %global		geosinstdir /usr/%{sname}%{_geosversion}
 %global		_geoslibdir lib64
 
+# https://fedoraproject.org/wiki/Changes/Broken_RPATH_will_fail_rpmbuild
+%global __brp_check_rpaths %{nil}
+
 Name:		%{sname}%{_geosversion}
 Version:	3.13.0
 Release:	1.1.fmi%{?dist}
