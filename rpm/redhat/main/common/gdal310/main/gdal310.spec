@@ -21,6 +21,7 @@
 
 %if 0%{?rhel} == 8
 %global python3_devel python39-devel
+%global __python3 /usr/bin/python3.9
 %else
 %global python3_devel python3-devel
 %endif
@@ -51,7 +52,7 @@
 
 Name:		%{sname}310
 Version:	3.10.1
-Release:	2.1.fmi%{?dist}
+Release:	2.2.fmi%{?dist}
 Summary:	GIS file format library
 License:	MIT
 URL:		https://www.gdal.org
@@ -489,6 +490,9 @@ done
 %endif
 
 %changelog
+* Mon Jul 21 2025 Andris Pavenis <andris.pavenis@fmi.fi> - 3.10.1-2.2.fmi
+- Force use of python-3.9 for RHEL8/RockyLinux 8
+
 * Tue Feb  4 2025 Andris Pavenis <andris.pavenis@fmi.fi> - 3.10.1-2.1.fmi
 - Support also RHEL8 build when newer curl, sqlite and tiff are available
 - Require binary packages of libgeotiff and libspatialite instead of devel packages for gdal310-libs
