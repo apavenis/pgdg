@@ -17,9 +17,9 @@
 %endif
 %global bashcompletiondir %(pkg-config --variable=compatdir bash-completion)
 
-%global geosfullversion %geos312fullversion
-%global geosmajorversion %geos312majorversion
-%global geosinstdir %geos312instdir
+%global geosfullversion %geos313fullversion
+%global geosmajorversion %geos313majorversion
+%global geosinstdir %geos313instdir
 
 %global gdalinstdir /usr/%{name}
 %global gdalsomajorversion	38
