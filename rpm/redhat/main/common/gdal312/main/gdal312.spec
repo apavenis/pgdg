@@ -87,7 +87,7 @@ BuildRequires:	freexl-devel
 BuildRequires:	g2clib-devel
 BuildRequires:	g2clib-static
 %endif
-BuildRequires:	geos%{geosmajorversion}-devel >= 3.13.3
+BuildRequires:	geos%{geosmajorversion}-devel >= 3.13.0
 BuildRequires:	ghostscript
 BuildRequires:	jpackage-utils
 %if 0%{?fedora} >= 40 || 0%{?rhel} >= 9 || 0%{?suse_version} >= 1499
