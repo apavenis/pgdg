@@ -9,7 +9,12 @@
 %else
 %{expand: %%global pyver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
 %endif
-
+%if 0%{?rhel} == 8
+%global python3_devel python39-devel
+%global __python3 /usr/bin/python3.9
+%else
+%global python3_devel python3-devel
+%endif
 %global bashcompletiondir %(pkg-config --variable=compatdir bash-completion)
 
 %global geosfullversion %geos314fullversion
@@ -89,7 +94,7 @@ BuildRequires:	jpackage-utils
 BuildRequires:	libarchive-devel >= 3.5.0
 %endif
 %ifnarch %{ppc64le}
-%if 0%{?rhel} || 0%{?fedora}
+%if 0%{?rhel} >= 9 || 0%{?fedora}
 BuildRequires:	libarrow-devel
 %endif
 BuildRequires:	libdeflate-devel
@@ -206,7 +211,7 @@ BuildRequires:	SFCGAL-devel
 %endif
 
 BuildRequires:	shapelib-devel curl-devel >= 7.68
-BuildRequires:	python3-devel >= 3.8
+BuildRequires:	%{python3_devel} >= 3.8
 BuildRequires:	openjpeg2-devel >= 2.3.1
 
 # Run time dependencies
@@ -247,6 +252,13 @@ Provides:	bundled(degrib) = 2.14
 Requires:	netcdf >= 4.7 gpsbabel
 Requires:	libgeotiff%{libgeotiffmajorversion}
 Requires:	libspatialite%{libspatialitemajorversion}
+%if 0%{?rhel} == 8
+Requires:	libcurl >= 7.68
+Requires: libtiff >= 4.1
+Requires: sqlite >= 3.31
+%endif
+# FMI: ensure that versions previosly used at FMI are removed
+Obsoletes:	gdal310-libs gdal38-libs gdal35-libs
 
 %if 0%{?suse_version}
 %if 0%{?suse_version} <= 1499
@@ -281,6 +293,7 @@ This package contains the API documentation for %{name}.
 
 %package python3
 %{?py_provide:%py_provide python3-gdal}
+Provides:	python3-gdal
 Summary:	Python modules for the GDAL file format library
 Requires:	python3-numpy
 Requires:	%{name}-libs%{?_isa} = %{version}-%{release}
@@ -487,6 +500,14 @@ done
 %endif
 
 %changelog
+* Mon Jul 21 2025 Andris Pavenis <andris.pavenis@fmi.fi> - 3.12.1-1.2.fmi
+- Force use of python-3.9 for RHEL8/RockyLinux 8
+
+* Tue Feb  4 2025 Andris Pavenis <andris.pavenis@fmi.fi> - 3.12.1-1.1.fmi
+- Support also RHEL8 build when newer curl, sqlite and tiff are available
+- Require binary packages of libgeotiff and libspatialite instead of devel packages for gdal312-libs
+- Remove build require libarrow in case of RHEL8 (fails to build due to conflict)
+
 * Thu Dec 18 2025 Devrim Gunduz <devrim@gunduz.org> - 3.12.1-1PGDG
 - Update to 3.12.1 per changes described at:
   https://github.com/OSGeo/gdal/releases/tag/v3.12.1
