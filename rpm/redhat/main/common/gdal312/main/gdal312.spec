@@ -319,7 +319,7 @@ manipulating GDAL file format library
 %setup -q -n %{sname}-%{version}-fedora
 
 %patch -P 0 -p0
-%patch -P 1 -p0
+%patch -P 1 -p1
 
 # Delete bundled libraries
 rm -rf frmts/png/libpng
