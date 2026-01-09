@@ -64,7 +64,7 @@ Source5:	%{sname}-cleaner.sh
 Source6:	%{name}-pgdg-libs.conf
 
 Patch0:		%{name}-cleanup.patch
-Patch1:   %{name}-multidim.patch
+Patch1:		%{name}-multidim.patch
 
 # lz4 and bash-completion dependencies
 %if 0%{?suse_version} >= 1500
@@ -319,6 +319,7 @@ manipulating GDAL file format library
 %setup -q -n %{sname}-%{version}-fedora
 
 %patch -P 0 -p0
+%patch -P 1 -p0
 
 # Delete bundled libraries
 rm -rf frmts/png/libpng
