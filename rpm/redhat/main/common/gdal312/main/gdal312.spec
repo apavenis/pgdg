@@ -17,9 +17,9 @@
 %endif
 %global bashcompletiondir %(pkg-config --variable=compatdir bash-completion)
 
-%global geosfullversion %geos313fullversion
-%global geosmajorversion %geos313majorversion
-%global geosinstdir %geos313instdir
+%global geosfullversion %geos312fullversion
+%global geosmajorversion %geos312majorversion
+%global geosinstdir %geos312instdir
 
 %global gdalinstdir /usr/%{name}
 %global gdalsomajorversion	38
@@ -30,9 +30,9 @@
 %global projfullversion %proj95fullversion
 %global projinstdir %proj95instdir
 %else
-%global projmajorversion %proj97majorversion
-%global projfullversion %proj97fullversion
-%global projinstdir %proj97instdir
+%global projmajorversion %proj95majorversion
+%global projfullversion %proj95fullversion
+%global projinstdir %proj95instdir
 %endif
 
 %if 0%{?suse_version} <= 1600
@@ -75,7 +75,7 @@ BuildRequires:	lz4-devel bash-completion
 Requires:	lz4
 %endif
 
-BuildRequires:	ant cmake gcc-c++ bison pgdg-srpm-macros >= 1.0.52
+BuildRequires:	ant cmake gcc-c++ bison pgdg-srpm-macros >= 1.0.45
 
 BuildRequires:	armadillo-devel
 BuildRequires:	cfitsio-devel
