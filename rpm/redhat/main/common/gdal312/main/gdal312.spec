@@ -17,18 +17,18 @@
 %endif
 %global bashcompletiondir %(pkg-config --variable=compatdir bash-completion)
 
-%global geosfullversion %geos314fullversion
-%global geosmajorversion %geos314majorversion
-%global geosinstdir %geos314instdir
+%global geosfullversion %geos313fullversion
+%global geosmajorversion %geos313majorversion
+%global geosinstdir %geos313instdir
 
 %global gdalinstdir /usr/%{name}
 %global gdalsomajorversion	38
 %global libspatialitemajorversion	50
 
 %if 0%{?rhel} && 0%{?rhel} == 8
-%global projmajorversion %proj96majorversion
-%global projfullversion %proj96fullversion
-%global projinstdir %proj96instdir
+%global projmajorversion %proj95majorversion
+%global projfullversion %proj95fullversion
+%global projinstdir %proj95instdir
 %else
 %global projmajorversion %proj97majorversion
 %global projfullversion %proj97fullversion
@@ -258,7 +258,7 @@ Requires: libtiff >= 4.1
 Requires: sqlite >= 3.31
 %endif
 # FMI: ensure that versions previosly used at FMI are removed
-Obsoletes:	gdal310-libs gdal38-libs gdal35-libs
+#Obsoletes:	gdal310-libs gdal38-libs gdal35-libs
 
 %if 0%{?suse_version}
 %if 0%{?suse_version} <= 1499
