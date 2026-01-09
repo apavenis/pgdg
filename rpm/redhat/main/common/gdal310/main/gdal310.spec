@@ -51,8 +51,8 @@
 # https://bugzilla.redhat.com/show_bug.cgi?id=1490492
 
 Name:		%{sname}310
-Version:	3.10.1
-Release:	2.2.fmi%{?dist}
+Version:	3.10.3
+Release:	2.1.fmi%{?dist}
 Summary:	GIS file format library
 License:	MIT
 URL:		https://www.gdal.org
