@@ -48,7 +48,7 @@
 
 Name:		%{sname}312
 Version:	3.12.1
-Release:	1PGDG%{?dist}
+Release:	1.1PGDG%{?dist}
 Summary:	GIS file format library
 License:	MIT
 URL:		https://www.gdal.org
@@ -500,13 +500,11 @@ done
 %endif
 
 %changelog
-* Mon Jul 21 2025 Andris Pavenis <andris.pavenis@fmi.fi> - 3.12.1-1.2.fmi
-- Force use of python-3.9 for RHEL8/RockyLinux 8
-
-* Tue Feb  4 2025 Andris Pavenis <andris.pavenis@fmi.fi> - 3.12.1-1.1.fmi
+* Fri Jan  9 2026 Andris Pavenis <andris.pavenis@fmi.fi> - 3.12.1-1.1.fmi
 - Support also RHEL8 build when newer curl, sqlite and tiff are available
 - Require binary packages of libgeotiff and libspatialite instead of devel packages for gdal312-libs
 - Remove build require libarrow in case of RHEL8 (fails to build due to conflict)
+- Force use of python-3.9 for RHEL8/RockyLinux 8
 
 * Thu Dec 18 2025 Devrim Gunduz <devrim@gunduz.org> - 3.12.1-1PGDG
 - Update to 3.12.1 per changes described at:
