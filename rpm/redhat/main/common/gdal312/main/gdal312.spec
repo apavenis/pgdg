@@ -64,7 +64,7 @@ Source5:	%{sname}-cleaner.sh
 Source6:	%{name}-pgdg-libs.conf
 
 Patch0:		%{name}-cleanup.patch
-Patch1:		%{name}-multidim.patch
+Patch1:		%{name}-unique_ptr.patch
 
 # lz4 and bash-completion dependencies
 %if 0%{?suse_version} >= 1500

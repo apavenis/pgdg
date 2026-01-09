@@ -1,0 +1,31 @@
+--- gdal-3.12.1-fedora/frmts/vrt/vrtdataset.h.orig	2026-01-09 12:21:43.483981990 +0200
++++ gdal-3.12.1-fedora/frmts/vrt/vrtdataset.h	2026-01-09 12:31:36.141527827 +0200
+@@ -23,6 +23,8 @@
+ #include "gdal_pam.h"
+ #include "gdal_vrt.h"
+ #include "gdal_rat.h"
++#include "gdal_colortable.h"
++#include "gdalpansharpen.h"
+ 
+ #include <atomic>
+ #include <deque>
+--- gdal-3.12.1-fedora/apps/gdalalg_vector_pipeline.h.orig	2026-01-09 12:33:11.428871793 +0200
++++ gdal-3.12.1-fedora/apps/gdalalg_vector_pipeline.h	2026-01-09 12:34:30.816102770 +0200
+@@ -18,6 +18,7 @@
+ 
+ #include "ogrsf_frmts.h"
+ #include "ogrlayerwithtranslatefeature.h"
++#include "memdataset.h"
+ 
+ #include <map>
+ #include <vector>
+--- gdal-3.12.1-fedora/gcore/gdal_multidim.h.orig	2026-01-09 11:06:14.215121801 +0200
++++ gdal-3.12.1-fedora/gcore/gdal_multidim.h	2026-01-09 11:06:39.668636055 +0200
+@@ -17,6 +17,7 @@
+ #include "cpl_conv.h"
+ #include "cpl_string.h"
+ #include "gdal.h"
++#include "gdal_rat.h"
+ #include "gdal_geotransform.h"
+ 
+ #include <cstddef>
