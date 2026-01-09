@@ -1,0 +1,10 @@
+--- gdal-3.12.1-fedora/gcore/gdal_multidim.h.orig	2026-01-09 11:06:14.215121801 +0200
++++ gdal-3.12.1-fedora/gcore/gdal_multidim.h	2026-01-09 11:06:39.668636055 +0200
+@@ -17,6 +17,7 @@
+ #include "cpl_conv.h"
+ #include "cpl_string.h"
+ #include "gdal.h"
++#include "gdal_rat.h"
+ #include "gdal_geotransform.h"
+ 
+ #include <cstddef>
