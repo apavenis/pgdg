@@ -10,8 +10,8 @@
 %{expand: %%global pyver %(echo `%{__python3} -c "import sys; sys.stdout.write(sys.version[:3])"`)}
 %endif
 %if 0%{?rhel} == 8
-%global python3_devel python39-devel
-%global __python3 /usr/bin/python3.9
+%global python3_devel python3.12-devel
+%global __python3 /usr/bin/python3.12
 %else
 %global python3_devel python3-devel
 %endif
